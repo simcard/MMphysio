@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* MM Physio brand colors - teal/turquoise theme */
+    --background: 0 0% 100%;
+    --foreground: 210 20% 15%;
+
+    --card: 180 15% 98%;
+    --card-foreground: 210 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 20% 15%;
+
+    /* Teal/Turquoise primary from logo */
+    --primary: 320 96% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Warm accent for CTAs */
+    --secondary: 175 50% 35%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 180 10% 95%;
+    --muted-foreground: 210 10% 45%;
+
+    /* Accent teal */
+    --accent: 320 96% 95%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 180 15% 90%;
+    --input: 180 15% 90%;
+    --ring: 175 65% 40%;
+
+    --radius: 0.75rem;
+
+    /* Custom physio colors */
+    --physio-teal: 175 65% 40%;
+    --physio-teal-light: 175 50% 55%;
+    --physio-teal-dark: 175 70% 30%;
+    --physio-navy: 210 40% 20%;
+    --physio-light: 180 20% 97%;
+    --physio-warm: 40 100% 97%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(175 65% 40%) 0%, hsl(175 70% 30%) 100%);
+    --gradient-overlay: linear-gradient(180deg, hsla(175, 65%, 40%, 0.85) 0%, hsla(175, 70%, 30%, 0.95) 100%);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 210 20% 15%;
+    --sidebar-primary: 175 65% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 175 50% 95%;
+    --sidebar-accent-foreground: 175 65% 35%;
+    --sidebar-border: 180 15% 90%;
+    --sidebar-ring: 175 65% 40%;
+  }
+
+  .dark {
+    --background: 210 30% 8%;
+    --foreground: 180 15% 95%;
+
+    --card: 210 25% 12%;
+    --card-foreground: 180 15% 95%;
+
+    --popover: 210 25% 12%;
+    --popover-foreground: 180 15% 95%;
+
+    --primary: 175 60% 50%;
+    --primary-foreground: 210 30% 8%;
+
+    --secondary: 175 40% 25%;
+    --secondary-foreground: 180 15% 95%;
+
+    --muted: 210 25% 18%;
+    --muted-foreground: 180 10% 65%;
+
+    --accent: 175 55% 45%;
+    --accent-foreground: 210 30% 8%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 180 15% 95%;
+
+    --border: 210 25% 20%;
+    --input: 210 25% 20%;
+    --ring: 175 60% 50%;
+
+    --sidebar-background: 210 25% 10%;
+    --sidebar-foreground: 180 15% 95%;
+    --sidebar-primary: 175 60% 50%;
+    --sidebar-primary-foreground: 210 30% 8%;
+    --sidebar-accent: 210 25% 18%;
+    --sidebar-accent-foreground: 180 15% 95%;
+    --sidebar-border: 210 25% 20%;
+    --sidebar-ring: 175 60% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .font-sans {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Hero gradient overlay */
+  .hero-overlay {
+    background: var(--gradient-overlay);
+  }
+
+  /* Teal gradient text */
+  .text-gradient-teal {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glass effect */
+  .glass {
+    background: hsla(0, 0%, 100%, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Section padding */
+  .section-padding {
+    @apply py-16 md:py-24 px-4 md:px-8;
+  }
+
+  /* Container max width */
+  .container-physio {
+    @apply max-w-7xl mx-auto px-4 md:px-8;
+  }
+}
+
+@layer components {
+  /* Animated underline for links */
+  .link-underline {
+    @apply relative inline-block;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute w-full h-0.5 bottom-0 left-0 bg-primary origin-bottom-right scale-x-0 transition-transform duration-300;
+  }
+
+  .link-underline:hover::after {
+    @apply origin-bottom-left scale-x-100;
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  /* Button variants */
+  .btn-physio {
+    @apply inline-flex items-center justify-center px-8 py-3 rounded-full font-medium transition-all duration-300;
+  }
+
+  .btn-physio-primary {
+    @apply btn-physio bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl;
+  }
+
+  .btn-physio-secondary {
+    @apply btn-physio bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-lg hover:shadow-xl;
+  }
+
+  .btn-physio-outline {
+    @apply btn-physio border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground;
+  }
+
+  /* Section title styling */
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl text-muted-foreground max-w-2xl;
+  }
+}
+
+/* Animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s ease-out forwards;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+/* Stagger animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
