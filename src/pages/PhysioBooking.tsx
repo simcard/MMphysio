@@ -24,6 +24,7 @@ const PhysioBooking = () => {
     locations,
     fetchLocations,
     fetchAvailabilityTimeSlots,
+    bookAppointment,
   } = usePhysioStore();
 
   useEffect(() => {
@@ -32,9 +33,9 @@ const PhysioBooking = () => {
 
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
-  const [selectedTherapist, setSelectedTherapist] = useState<string | null>(
-    null,
-  );
+  const [selectedTherapist, setSelectedTherapist] = useState<
+    { name: string; calendarId?: string } | undefined
+  >(undefined);
 
   const [selectedLocation, setSelectedLocation] = useState<string>("");
 
@@ -63,7 +64,7 @@ const PhysioBooking = () => {
 
   const filteredSlots = availableSlots.filter((slot) => slot.available);
 
-  const handleBooking = () => {
+  const handleBooking = async () => {
     if (
       !selectedSlot ||
       !patientInfo.name ||
@@ -73,6 +74,27 @@ const PhysioBooking = () => {
       toast({
         title: "Missing Information",
         description: "Please fill in all required fields.",
+        variant: "destructive",
+      });
+      return;
+    }
+    try {
+      await bookAppointment({
+        date: selectedDate ? format(selectedDate, "yyyy-MM-dd") : "",
+        name: patientInfo.name,
+        email: patientInfo.email,
+        phone: patientInfo.phone,
+        reason: patientInfo.reason ? patientInfo.reason : "N/A",
+        calendarId: selectedTherapist?.calendarId,
+        therapist: selectedTherapist?.name,
+        location: selectedLocation,
+        time: availableSlots.find((s) => s.id === selectedSlot)?.time,
+      });
+    } catch (err) {
+      toast({
+        title: "Booking Failed",
+        description:
+          "There was an error booking your appointment. Please try again.",
         variant: "destructive",
       });
       return;
@@ -87,8 +109,17 @@ const PhysioBooking = () => {
     setStep(1);
     setSelectedDate(undefined);
     setSelectedSlot(null);
-    setSelectedTherapist(null);
+    setSelectedTherapist(undefined);
     setPatientInfo({ name: "", email: "", phone: "", reason: "" });
+  };
+  const isPastDate = (date: Date) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const d = new Date(date);
+    d.setHours(0, 0, 0, 0);
+
+    return d < today;
   };
 
   return (
@@ -196,7 +227,7 @@ const PhysioBooking = () => {
                       selected={selectedDate}
                       onSelect={setSelectedDate}
                       disabled={(date) =>
-                        date < new Date() || date.getDay() === 0
+                        isPastDate(date) || date.getDay() === 0
                       }
                       className="rounded-md border"
                     />
@@ -216,7 +247,10 @@ const PhysioBooking = () => {
                               key={slot.id}
                               onClick={() => {
                                 setSelectedSlot(slot.id);
-                                setSelectedTherapist(slot.therapist || null);
+                                setSelectedTherapist({
+                                  name: slot.therapist,
+                                  calendarId: slot.calendarId || undefined,
+                                });
                               }}
                               className={`p-4 rounded-xl border-2 text-center transition-all ${
                                 selectedSlot === slot.id
@@ -382,7 +416,7 @@ const PhysioBooking = () => {
                       <div className="flex items-center gap-3">
                         <User className="w-5 h-5 text-primary" />
                         <span>
-                          {selectedTherapist || "Any Available Therapist"}
+                          {selectedTherapist?.name || "Any Available Therapist"}
                         </span>
                       </div>
                       <div className="flex items-center gap-3">

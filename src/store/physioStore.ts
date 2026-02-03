@@ -1,7 +1,8 @@
 import { getLocations } from "@/serivces/site";
 import { create } from "zustand";
 import { Location } from "../model/site";
-import { getAvailabilityTimeSlot } from "@/serivces/calander";  
+import { bookAppointment, getAvailabilityTimeSlot } from "@/serivces/calander";  
+import { BookAppointment } from "@/model/calendar";
 export interface Service {
   id: string;
   title: string;
@@ -37,6 +38,7 @@ interface PhysioState {
   availableSlots: TimeSlot[];
   selectedDate: string | null;
   setSelectedDate: (date: string | null) => void;
+  bookAppointment: (appointment: BookAppointment) => Promise<void>;
 }
 
 export const usePhysioStore = create<PhysioState>((set) => ({
@@ -216,6 +218,14 @@ export const usePhysioStore = create<PhysioState>((set) => ({
       set({ availableSlots: response });
     } catch (err) {
       console.log("Failed to fetch availability time slots", err);
+    }
+  },
+  bookAppointment: async (appointment: BookAppointment) => {
+    // Placeholder for booking appointment logic
+    try {
+      await bookAppointment(appointment)
+    } catch (err) {
+      console.log("Failed to book appointment", err);
     }
   },
 

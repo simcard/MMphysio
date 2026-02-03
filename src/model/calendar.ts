@@ -7,5 +7,5 @@ export interface BookAppointment {
   therapist: string,
   location: string,
   reason: string ,
-  calenderId?: string,
+  calendarId?: string,
 }
