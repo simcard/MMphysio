@@ -7,6 +7,8 @@ import {
   Activity, HeartPulse, ShieldCheck, Hand, Target, Dumbbell, 
   ArrowRight, CheckCircle, Phone, Calendar, Users, Award
 } from 'lucide-react';
+import { useEffect } from 'react';
+import { FullScreenLoader } from "@/components/ui/FullScreenLoader";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   'activity': Activity,
@@ -25,10 +27,14 @@ const stats = [
 ];
 
 const PhysioHome = () => {
-  const { services } = usePhysioStore();
+  const { services, fetchServices, loading } = usePhysioStore();
+  useEffect(() => {
+    fetchServices();
+  }, [fetchServices]);
 
   return (
     <div className="min-h-screen">
+      {loading && <FullScreenLoader />}
       <PhysioHeader />
       
       <main className="pt-28 md:pt-32">

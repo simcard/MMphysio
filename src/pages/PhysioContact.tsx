@@ -111,7 +111,7 @@ const PhysioContact = () => {
                         <Input
                           id="phone"
                           type="tel"
-                          placeholder="+27 11 234 5678"
+                          placeholder="+27 76 485 2291"
                           {...register('phone')}
                           className="bg-background"
                         />
@@ -177,7 +177,7 @@ const PhysioContact = () => {
                       <div>
                         <p className="font-medium">Phone</p>
                         <a href="tel:+27112345678" className="text-muted-foreground hover:text-primary transition-colors">
-                          +27 11 234 5678
+                          +27 76 485 2291
                         </a>
                       </div>
                     </li>

@@ -5,6 +5,7 @@ import { usePhysioStore } from "@/store/physioStore";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Calendar } from "@/components/ui/calendar";
+import { FullScreenLoader } from "@/components/ui/FullScreenLoader";
 import { useToast } from "@/hooks/use-toast";
 import {
   Calendar as CalendarIcon,
@@ -19,12 +20,12 @@ import { format } from "date-fns";
 
 const PhysioBooking = () => {
   const {
-    team,
     availableSlots,
     locations,
     fetchLocations,
     fetchAvailabilityTimeSlots,
     bookAppointment,
+    loading
   } = usePhysioStore();
 
   useEffect(() => {
@@ -124,6 +125,7 @@ const PhysioBooking = () => {
 
   return (
     <div className="min-h-screen">
+      {loading && <FullScreenLoader />}
       <PhysioHeader />
 
       <main className="pt-28 md:pt-32">
@@ -499,7 +501,7 @@ const PhysioBooking = () => {
             >
               <a href="tel:+27112345678">
                 <Phone className="w-4 h-4 mr-2" />
-                Call Us: +27 11 234 5678
+                Call Us: +27 76 485 2291
               </a>
             </Button>
           </div>

@@ -4,12 +4,18 @@ import { PhysioFooter } from '@/components/layout/PhysioFooter';
 import { usePhysioStore } from '@/store/physioStore';
 import { Button } from '@/components/ui/button';
 import { GraduationCap, Award, Calendar } from 'lucide-react';
+import { useEffect } from 'react';
+import { FullScreenLoader } from '@/components/ui/FullScreenLoader';
 
 const PhysioTeam = () => {
-  const { team } = usePhysioStore();
+  const { team, fetchTeam, loading } = usePhysioStore();
+  useEffect(() => {
+    fetchTeam();
+  }, [fetchTeam]);
 
   return (
     <div className="min-h-screen">
+      {loading && <FullScreenLoader />}
       <PhysioHeader />
       
       <main className="pt-28 md:pt-32">
