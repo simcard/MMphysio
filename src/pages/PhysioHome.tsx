@@ -51,8 +51,8 @@ const PhysioHome = () => {
                   Expert Physiotherapy Care
                 </span>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6 leading-tight">
-                  Move Better,<br />
-                  <span className="text-primary">Feel Better</span>
+                  Empowering Your <br />
+                  <span className="text-primary">Recovery</span>
                 </h1>
                 <p className="text-lg text-muted-foreground mb-8 max-w-lg leading-relaxed">
                   Personalized physiotherapy treatments designed to help you recover, 
@@ -74,13 +74,13 @@ const PhysioHome = () => {
                 </div>
               </div>
               
-              {/* <div className="relative hidden lg:block">
+              <div className="relative hidden lg:block">
                 <img 
-                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&q=80" 
+                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80" 
                   alt="Physiotherapy treatment"
                   className="rounded-3xl shadow-2xl"
                 />
-                <div className="absolute -bottom-6 -left-6 bg-card rounded-2xl p-6 shadow-xl border border-border">
+                {/* <div className="absolute -bottom-6 -left-6 bg-card rounded-2xl p-6 shadow-xl border border-border">
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center">
                       <Users className="w-7 h-7 text-primary" />
@@ -90,8 +90,8 @@ const PhysioHome = () => {
                       <p className="text-sm text-muted-foreground">Happy Patients</p>
                     </div>
                   </div>
-                </div> 
-              </div>*/}
+                </div>  */}
+              </div>
             </div>
           </div>
         </section>
