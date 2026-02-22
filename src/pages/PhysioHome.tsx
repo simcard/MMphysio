@@ -20,10 +20,8 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 };
 
 const stats = [
-  { value: '15+', label: 'Years Experience' },
-  { value: '10,000+', label: 'Patients Treated' },
-  { value: '4', label: 'Expert Therapists' },
-  { value: '98%', label: 'Patient Satisfaction' },
+  { value: '10+', label: 'Years Experience' },
+  { value: '2', label: 'Expert Therapists' },
 ];
 
 const PhysioHome = () => {
@@ -68,7 +66,7 @@ const PhysioHome = () => {
                     </Link>
                   </Button>
                   <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full px-8 py-6 text-lg">
-                    <a href="tel:+27112345678">
+                    <a href="tel:+27764852291">
                       <Phone className="w-5 h-5 mr-2" />
                       Call Us
                     </a>
@@ -76,7 +74,7 @@ const PhysioHome = () => {
                 </div>
               </div>
               
-              <div className="relative hidden lg:block">
+              {/* <div className="relative hidden lg:block">
                 <img 
                   src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&q=80" 
                   alt="Physiotherapy treatment"
@@ -92,8 +90,8 @@ const PhysioHome = () => {
                       <p className="text-sm text-muted-foreground">Happy Patients</p>
                     </div>
                   </div>
-                </div>
-              </div>
+                </div> 
+              </div>*/}
             </div>
           </div>
         </section>

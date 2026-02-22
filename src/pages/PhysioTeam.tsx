@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { GraduationCap, Award, Calendar } from 'lucide-react';
 import { useEffect } from 'react';
 import { FullScreenLoader } from '@/components/ui/FullScreenLoader';
+import profile from "@/assets/profile.png";
 
 const PhysioTeam = () => {
   const { team, fetchTeam, loading } = usePhysioStore();
@@ -56,7 +57,7 @@ const PhysioTeam = () => {
                     <div className="lg:col-span-2">
                       <div className="aspect-square lg:aspect-auto lg:h-full overflow-hidden">
                         <img 
-                          src={member.image} 
+                          src={profile} 
                           alt={member.name}
                           className="w-full h-full object-cover"
                         />
@@ -90,7 +91,7 @@ const PhysioTeam = () => {
                       <div>
                         <div className="flex items-center gap-2 mb-2">
                           <Award className="w-5 h-5 text-primary" />
-                          <span className="font-medium text-foreground">Specializations</span>
+                          <span className="font-medium text-foreground">Special Interests</span>
                         </div>
                         <div className="flex flex-wrap gap-2 pl-7">
                           {member.specializations.map((spec) => (
@@ -106,7 +107,25 @@ const PhysioTeam = () => {
                     </div>
                   </div>
                 </div>
+
               ))}
+               <div 
+                  className="bg-card rounded-2xl overflow-hidden card-hover border border-border"
+                >
+                  <div className="grid grid-cols-1">
+                  <div className="lg:col-span-3 p-8">
+                   <p className="text-muted-foreground mb-6 leading-relaxed">
+                    Onele Mafunda is a dedicated and compassionate physiotherapist who believes that movement is the foundation of a healthy and fulfilling life. An avid runner and regular gym-goer, Onele practices what she preaches, understanding first-hand the demands that sport, work, and daily life place on the body.
+                   </p>
+                   <p className="text-muted-foreground mb-6 leading-relaxed">
+                    With a genuine passion for helping people recover, move better, and live pain-free, Onele is known for taking a hands-on, patient-centred approach to care. She values building strong relationships with her patients, listening to their goals, and creating personalised treatment plans that support long-term recovery and wellbeing.
+                   </p>
+                   <p className="text-muted-foreground mb-6 leading-relaxed">
+                    Family-oriented and actively involved in church and community, Onele brings empathy, integrity, and respect into every interaction. Whether working with athletes, post-surgical patients, or individuals managing chronic pain, her mission is simple: to help people get back to doing what they love with confidence and strength.
+                   </p>
+                  </div>
+                  </div>
+                </div>
             </div>
           </div>
         </section>

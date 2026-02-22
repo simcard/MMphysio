@@ -81,6 +81,7 @@ export const usePhysioStore = create<PhysioState>((set) => ({
     } catch (err) {
       console.log("Failed to book appointment", err);
       set({ loading: false });
+      throw err;
     }
   },
   fetchServices: async () => {
@@ -96,7 +97,7 @@ export const usePhysioStore = create<PhysioState>((set) => ({
   fetchTeam: async () => {
     try {
       set({ loading: true });
-      const response = await getTeam();   
+      const response = await getTeam(); 
       set({ team: response, loading: false });
     } catch (err) {
       console.log("Failed to fetch team", err);

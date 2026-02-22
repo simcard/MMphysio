@@ -176,7 +176,7 @@ const PhysioContact = () => {
                       </div>
                       <div>
                         <p className="font-medium">Phone</p>
-                        <a href="tel:+27112345678" className="text-muted-foreground hover:text-primary transition-colors">
+                        <a href="tel:++27764852291" className="text-muted-foreground hover:text-primary transition-colors">
                           +27 76 485 2291
                         </a>
                       </div>

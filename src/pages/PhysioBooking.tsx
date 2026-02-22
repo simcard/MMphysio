@@ -88,7 +88,7 @@ const PhysioBooking = () => {
         reason: patientInfo.reason ? patientInfo.reason : "N/A",
         calendarId: selectedTherapist?.calendarId,
         therapist: selectedTherapist?.name,
-        location: selectedLocation,
+        location: `${locations.find((l) => l.id === selectedLocation)?.name}: address here: ${locations.find((l) => l.id === selectedLocation)?.address || ''}`,
         time: availableSlots.find((s) => s.id === selectedSlot)?.time,
       });
     } catch (err) {
@@ -336,7 +336,7 @@ const PhysioBooking = () => {
                       </label>
                       <Input
                         type="tel"
-                        placeholder="+27 12 345 6789"
+                        placeholder="+27 76 485 2291"
                         value={patientInfo.phone}
                         onChange={(e) =>
                           setPatientInfo({
@@ -499,7 +499,7 @@ const PhysioBooking = () => {
               variant="outline"
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full px-8"
             >
-              <a href="tel:+27112345678">
+              <a href="tel:+27764852291">
                 <Phone className="w-4 h-4 mr-2" />
                 Call Us: +27 76 485 2291
               </a>
