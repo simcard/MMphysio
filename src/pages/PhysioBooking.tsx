@@ -25,7 +25,7 @@ const PhysioBooking = () => {
     fetchLocations,
     fetchAvailabilityTimeSlots,
     bookAppointment,
-    loading
+    loading,
   } = usePhysioStore();
 
   useEffect(() => {
@@ -88,7 +88,7 @@ const PhysioBooking = () => {
         reason: patientInfo.reason ? patientInfo.reason : "N/A",
         calendarId: selectedTherapist?.calendarId,
         therapist: selectedTherapist?.name,
-        location: `${locations.find((l) => l.id === selectedLocation)?.name}: address here: ${locations.find((l) => l.id === selectedLocation)?.address || ''}`,
+        location: `${locations.find((l) => l.id === selectedLocation)?.name}: address here: ${locations.find((l) => l.id === selectedLocation)?.address || ""}`,
         time: availableSlots.find((s) => s.id === selectedSlot)?.time,
       });
     } catch (err) {
@@ -229,7 +229,9 @@ const PhysioBooking = () => {
                       selected={selectedDate}
                       onSelect={setSelectedDate}
                       disabled={(date) =>
-                        isPastDate(date) || date.getDay() === 0
+                        isPastDate(date) ||
+                        date.getDay() === 0 ||
+                        date.getDay() === 6
                       }
                       className="rounded-md border"
                     />
