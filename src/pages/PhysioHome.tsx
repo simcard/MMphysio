@@ -9,6 +9,8 @@ import {
 } from 'lucide-react';
 import { useEffect } from 'react';
 import { FullScreenLoader } from "@/components/ui/FullScreenLoader";
+import home1 from '@/assets/home1.png';
+import home2 from '@/assets/home2.png'
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   'activity': Activity,
@@ -20,7 +22,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 };
 
 const stats = [
-  { value: '10+', label: 'Years Experience' },
+  { value: '15+', label: 'Years Experience' },
   { value: '2', label: 'Expert Therapists' },
 ];
 
@@ -76,7 +78,7 @@ const PhysioHome = () => {
               
               <div className="relative hidden lg:block">
                 <img 
-                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80" 
+                  src={ home1 } 
                   alt="Physiotherapy treatment"
                   className="rounded-3xl shadow-2xl"
                 />
@@ -166,7 +168,7 @@ const PhysioHome = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80"
+                  src={ home2}
                   alt="Physiotherapy clinic"
                   className="rounded-2xl shadow-xl"
                 />

@@ -7,6 +7,7 @@ import { GraduationCap, Award, Calendar } from "lucide-react";
 import { useEffect } from "react";
 import { FullScreenLoader } from "@/components/ui/FullScreenLoader";
 import profile from "@/assets/profile.png";
+import team1 from '@/assets/team1.png'
 
 const PhysioTeam = () => {
   const { team, fetchTeam, loading } = usePhysioStore();
@@ -279,7 +280,7 @@ const PhysioTeam = () => {
               </div>
               <div className="relative">
                 <img
-                  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=80"
+                  src={team1}
                   alt="Our team in action"
                   className="rounded-2xl shadow-xl"
                 />

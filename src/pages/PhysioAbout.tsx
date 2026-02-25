@@ -3,6 +3,7 @@ import { PhysioHeader } from '@/components/layout/PhysioHeader';
 import { PhysioFooter } from '@/components/layout/PhysioFooter';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Heart, Target, Users, Award, Shield } from 'lucide-react';
+import home2 from '@/assets/home2.png'
 
 const values = [
   {
@@ -189,7 +190,7 @@ const PhysioAbout = () => {
               </div>
               <div className="relative hidden lg:block">
                 <img 
-                  src="https://images.unsplash.com/photo-1571019613576-2b22c76fd955?w=800&q=80"
+                  src={ home2 }
                   alt="Treatment session"
                   className="rounded-2xl shadow-2xl"
                 />
