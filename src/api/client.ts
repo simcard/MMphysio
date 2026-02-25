@@ -2,9 +2,9 @@ import axios from "axios";
 
 const getApi = () => {
   return axios.create({
-    baseURL: import.meta.env.VITE_API_URL, // now always correct
+    baseURL: "https://mmphysio-api-437392143274.africa-south1.run.app/", // now always correct
     headers: {
-      "X-API-KEY": import.meta.env.VITE_API_KEY,
+      "X-API-KEY": "sGdl8A7GVOOKGuR4dFEVdFqMDED4pjCbAH0wj+nUsU8=",
       "Content-Type": "application/json",
     },
   });

@@ -13,7 +13,7 @@ const PhysioTeam = () => {
   const { team, fetchTeam, loading } = usePhysioStore();
   useEffect(() => {
     fetchTeam();
-  }, [fetchTeam]);
+  }, []);
 
   return (
     <div className="min-h-screen">

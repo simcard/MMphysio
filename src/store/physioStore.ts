@@ -94,16 +94,23 @@ export const usePhysioStore = create<PhysioState>((set) => ({
       set({ loading: false });
     }
   },
-  fetchTeam: async () => {
-    try {
-      set({ loading: true });
-      const response = await getTeam(); 
-      set({ team: response, loading: false });
-    } catch (err) {
-      console.log("Failed to fetch team", err);
-      set({ loading: false });  
-    }
-  },
+fetchTeam: async () => {
+  try {
+    set({ loading: true });
+    const response = await getTeam();
+
+    set({
+      team: Array.isArray(response) ? response : [],
+      loading: false,
+    });
+  } catch (err) {
+    console.log("Failed to fetch team", err);
+    set({
+      team: [],
+      loading: false,
+    });
+  }
+},
   selectedDate: null,
   setSelectedDate: (date) => set({ selectedDate: date }),
 }));
