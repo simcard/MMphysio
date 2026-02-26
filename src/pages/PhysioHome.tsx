@@ -76,7 +76,7 @@ const PhysioHome = () => {
                 </div>
               </div>
               
-              <div className="relative hidden lg:block">
+              <div className="relative">
                 <img 
                   src={ home1 } 
                   alt="Physiotherapy treatment"
