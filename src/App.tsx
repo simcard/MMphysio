@@ -20,7 +20,6 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<PhysioHome />} />
-          <Route path="/about" element={<PhysioAbout />} />
           <Route path="/team" element={<PhysioTeam />} />
           <Route path="/contact" element={<PhysioContact />} />
           <Route path="/booking" element={<PhysioBooking />} />
